@@ -18,9 +18,16 @@
 // \d{4}  exactly 4 digit characters
 // $      end of line
 
+// RegExp test using Arrow function
+const testPhoneNumber = phoneNumber => /(^\(\d{3}\)|^\d{3})[-\s]\d{3}[-\s]\d{4}$/.test(phoneNumber);
+
 // check testPhoneNumber
 console.log(testPhoneNumber('(206) 333-4444')); // should return true
+console.log(testPhoneNumber('206-333-4444')); // should return true
+console.log(testPhoneNumber('206 333 4444')); // should return true
 console.log(testPhoneNumber('(206) 33-4444')); // should return false, missing a digit
+console.log(testPhoneNumber('206)-333-4444')); // should return false, only single parenthesis
+console.log(testPhoneNumber('(206-333-4444')); // should return false, only single parenthesis
 
 
 // 1. Create a function parsePhoneNumber that takes in a phoneNumber string 

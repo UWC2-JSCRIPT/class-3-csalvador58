@@ -1,12 +1,17 @@
 // 1. Create attack function below.  This will take the following parameters:
 // attackingPlayer, defendingPlayer, baseDamage, variableDamage
 
-const attack = (attackingPlayer, defendingPlayer, baseDamage, variableDamage) => {
-  let totalDamage = baseDamage + Math.floor(Math.random() * variableDamage + 1);
-  // console.log(Math.floor(Math.random() * variableDamage + 1))
+function attack(attackingPlayer, defendingPlayer, baseDamage, variableDamage) {
+  // Calculate total damage which equals a base number plus random number from 0 to a variable parameter
+  let totalDamage = baseDamage + Math.floor(Math.random() * (variableDamage + 1));
+  
+  // Reduce damage to defending player
   defendingPlayer.health -= totalDamage;
-  return `${attackingPlayer.name} hits ${defendingPlayer.name} for ${totalDamage} damage.`;
-}
+
+  // Return a string describing attack
+  return `${attackingPlayer.name} hits ${defendingPlayer.name} for ${totalDamage} damage.
+  ${defendingPlayer.name} has ${defendingPlayer.health} health remaining.`;
+};
 
 
 // 2. Create player1 and player2 objects below

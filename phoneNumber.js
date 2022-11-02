@@ -20,6 +20,14 @@
 
 // RegExp test using Arrow function
 const testPhoneNumber = phoneNumber => /(^\(\d{3}\)|^\d{3})[-\s]\d{3}[-\s]\d{4}$/.test(phoneNumber);
+/* Code explained:
+(^\(\d{3}\)|^\d{3}) - Phone number must start with (###) or ### format
+[-\s] - the above condition followed by a space or dash
+\d{3} - the above condition followed 3 digits
+[-\s] - the above condition followed by a space or dash
+\d{4}$ - the above condition followed by and end with 4 digits
+*/
+
 
 // check testPhoneNumber
 console.log(testPhoneNumber('(206) 333-4444')); // should return true
@@ -37,6 +45,23 @@ console.log(testPhoneNumber('(206-333-4444')); // should return false, only sing
 // the phone number.
 // Returns an object in the format {areaCode, phoneNumber}
 
+const parsePhoneNumber= phoneNumber => {
+    if (testPhoneNumber(phoneNumber)) {
+        // Convert string to exclude non-digits characters
+        const digitsOnlyStr = phoneNumber.replace(/\W/g, '');
+        // console.log("Answer: " + digitsOnlyStr);
+        // console.log(Array.from(digitsOnlyStr).splice(0,3).join(''));
+        // console.log(Array.from(digitsOnlyStr).splice(3,10).join(''));
+        return {areaCode: Array.from(digitsOnlyStr).splice(0,3).join(''), phone: Array.from(digitsOnlyStr).splice(3,10).join('')};
+        /* Code explained:
+        phoneNumber.replace(/\W/g, '') - replace method will search for regex that are non-digit characters and replace with ''
+
+        areaCode: Array.from(digitsOnlyStr).splice(0,3).join('') - digitsOnlyStr needs to be converted to an array which then can be used with splice to extract the specific digits at specified index positions. Join is then used to convert the array back to a string.
+
+        phone: Array.from(digitsOnlyStr).splice(3,10).join('') - same explanation as above except splice parameters are updated to extract last 7 digits.
+        */
+    }
+}
 
 
 // Check parsePhoneNumber

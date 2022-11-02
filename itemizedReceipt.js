@@ -3,6 +3,26 @@
 // i.e. {descr: 'Coke', price: 1.99}
 // function should log each item to the console and log a total price
 
+const teacher = { says: 'blah, blah', talk(punct) {
+    console.log(`${this.says}${punct}`); }
+  };
+  const student = {
+    says: 'Wait... what' }
+  teacher.talk.call(student, '?');
+
+
+
+const logReceipt = (...items) => {
+  console.log(items);
+
+  items.forEach(item => {
+    console.log(`Description: ${item.descr}, Price: ${item.price}`);
+  })
+
+  // let total = items.reduce((sum, price) => sum + price);
+  // console.log(`Final total: ${total}`);
+  
+}
 
 
 // Check

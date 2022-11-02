@@ -1,12 +1,27 @@
 // 1. Create attack function below.  This will take the following parameters:
 // attackingPlayer, defendingPlayer, baseDamage, variableDamage
 
+const attack = (attackingPlayer, defendingPlayer, baseDamage, variableDamage) => {
+  let totalDamage = baseDamage + Math.floor(Math.random() * variableDamage + 1);
+  // console.log(Math.floor(Math.random() * variableDamage + 1))
+  defendingPlayer.health -= totalDamage;
+  return `${attackingPlayer.name} hits ${defendingPlayer.name} for ${totalDamage} damage.`;
+}
 
 
 // 2. Create player1 and player2 objects below
 // Each should have a name property of your choosing, and health property equal to 10
 
+const player1 = {
+  name: "Wolverine",
+  health: 20
+}
 
+const player2 = {
+  name: "Magneto",
+  health: 20
+}
+console.log(attack(player1, player2, 3, 4));
 
 // 3. Refactor attack function to an arrow function.  Comment out function above.
 

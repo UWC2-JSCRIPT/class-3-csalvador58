@@ -7,7 +7,7 @@ const logReceipt = (...items) => {
   // Used forEach method on array of objects to log each elements' description and price
   items.forEach(item => {
     console.log(`Description: ${item.descr}, Price: ${item.price}`);
-  })
+  });
 
   // Used the reduce method to return an accumulated sum of the price from each object in the array. The syntax '{}' was used in the function's parameter section to select the 'price' in each object to include in the accumulated sum.
   let totalPrice = items.reduce((sum, {price}) => sum + price, 0);

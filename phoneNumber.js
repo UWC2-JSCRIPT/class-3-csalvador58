@@ -50,7 +50,7 @@ const parsePhoneNumber = phoneNumber => {
     if (testPhoneNumber(phoneNumber)) {
         // Match first 3 digits using exec method
         const area = /\d{3}/.exec(phoneNumber)[0];
-        // Match ###-#### format then remove '-'
+        // Match ###-#### format with exec method then remove '-' using replace() method
         const phone = /\d{3}[-]\d{4}$/.exec(phoneNumber)[0].replace(/\W/g, '');
         
         return {areaCode: area, phoneNumber: phone}

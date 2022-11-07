@@ -44,7 +44,7 @@ const orderTeams = (...args) => {
   });
 }
 /* Code explained:
-The rest params is used in the function to place the objects in an array. The forEach method is used to iterate through each object element and show the team name and total points. To show the total points the getTotalPoints function from the exercise above was used to convert the string value in the results property.
+The rest params is used in the function to place the objects in an array. The forEach method is used to iterate through each object element and show the team name and total points. To show the total points, the getTotalPoints function from the exercise above was used to convert the string value in the results property.
 */
 
 

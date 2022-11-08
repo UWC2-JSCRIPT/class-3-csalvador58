@@ -5,7 +5,7 @@ const RESULT_VALUES = {
   l: 0
 }
 
-/**
+/* 
  * Takes a single result string and (one of 'w', 'l', or 'd') 
  * and returns the point value
  * 
@@ -20,6 +20,14 @@ const getPointsFromResult = function getPointsFromResult(result) {
 // including wins, draws, and losses i.e. 'wwdlw'
 // Returns total number of points won
 
+const getTotalPoints = results => {
+  const strToArray = Array.from(results);
+  return strToArray.reduce((sum, result) => sum + RESULT_VALUES[result], 0);
+  /* Code explained:
+  The string passed to the function is converted to an array using Array.from() method which then the reduce method is used to iterate through each array element and produce a final sum value. As each array element is iterated on, RESULT_VALUES[result] will access the value for the w, d, and i results. 
+  */
+}
+
 
 
 // Check getTotalPoints
@@ -30,6 +38,14 @@ console.log(getTotalPoints('wwdl')); // should equal 7
 // i.e. {name: 'Sounders', results: 'wwlwdd'}
 // Logs each entry to the console as "Team name: points"
 
+const orderTeams = (...args) => {
+  args.forEach(arg => {
+    console.log(`${arg.name}: ${getTotalPoints(arg.results)}`)
+  });
+}
+/* Code explained:
+The rest params is used in the function to place the objects in an array. The forEach method is used to iterate through each object element and show the team name and total points. To show the total points, the getTotalPoints function from the exercise above was used to convert the string value in the results property.
+*/
 
 
 // Check orderTeams

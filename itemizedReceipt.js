@@ -4,14 +4,21 @@
 // function should log each item to the console and log a total price
 
 const logReceipt = (...items) => {
+  
+  // Declared variables to complete extra credit showing subtotal and tax
+  let subTotal = 0;
+  let waSalesTax = 0.1025;
   // Used forEach method on array of objects to log each elements' description and price
   items.forEach(item => {
-    console.log(`Item: ${item.descr}, Price: ${item.price}`);
+    item.tax = item.price * waSalesTax;
+    console.log(`Item: ${item.descr} - $${item.price}`);
+    subTotal += item.price;
   });
-
-  // Used the reduce method to return an accumulated sum of the price from each object in the array. The syntax '{}' was used in the function's parameter section to select the 'price' in each object to include in the accumulated sum.
-  let totalPrice = items.reduce((sum, {price}) => sum + price, 0);
-  console.log(`Total price: ${totalPrice}`);
+  // Print subtotal, tax, total.
+  console.log(`
+  Subtotal: \t\t$${subTotal}
+  Taxes @${waSalesTax*100}%: \t$${(subTotal * waSalesTax).toFixed(2)}
+  Total: \t\t\t$${(subTotal + (subTotal * waSalesTax)).toFixed(2)}`);
 }
 
 
@@ -26,3 +33,13 @@ logReceipt(
 // Chips & Salsa - $2.99
 // Sprite - $1.99
 // Total - $10.97
+
+/*
+Item: Burrito - $5.99
+Item: Chips & Salsa - $2.99
+Item: Sprite - $1.99
+
+  Subtotal: 		  $10.97
+  Taxes @10.25%: 	$1.12
+  Total: 			    $12.09
+*/
